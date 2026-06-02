@@ -74,34 +74,19 @@ const galleryImages = [
     label: 'Southeastern Energy Conference poster award winners',
   },
   {
-    src: '/images/gallery/thumbs/IMG_0303.jpeg.png',
-    alt: 'William at a conference poster session with a colleague',
-    label: 'Conference poster session',
-  },
-  {
-    src: '/images/gallery/thumbs/IMG_1702.jpeg.png',
-    alt: 'William standing beside a research poster',
-    label: 'Research poster',
-  },
-  {
     src: '/images/gallery/thumbs/IMG_1830.jpeg.png',
     alt: 'William presenting research at a conference podium',
-    label: 'Research presentation',
+    label: 'Great Falls National Park',
   },
   {
     src: '/images/gallery/thumbs/IMG-20240903-WA0005.jpeg.png',
     alt: 'William outdoors with family while hiking',
-    label: 'Family hike',
-  },
-  {
-    src: '/images/gallery/thumbs/IMG_1752.jpeg.png',
-    alt: 'Poster session photo with a DNA tension probes poster',
-    label: 'Poster session',
+    label: 'Family hike, Rocky Mountains',
   },
   {
     src: '/images/gallery/thumbs/IMG_2097.jpeg.png',
     alt: 'William hiking sand dunes near a lake',
-    label: 'The Dune hike',
+    label: 'The Dune Trail, Sleeping Bear Dunes',
   },
   {
     src: '/images/gallery/thumbs/IMG_0960.jpeg.png',
