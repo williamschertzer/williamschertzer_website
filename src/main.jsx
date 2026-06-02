@@ -1,15 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {
-  ArrowUpRight,
+  Award,
+  BookOpen,
   BriefcaseBusiness,
   Download,
+  Github,
   GraduationCap,
-  Layers3,
   Linkedin,
   Mail,
   MapPin,
-  Sparkles,
+  Microscope,
+  Mountain,
+  Presentation,
 } from 'lucide-react';
 import './styles.css';
 
@@ -18,130 +21,301 @@ const profile = {
   role: 'Computational materials scientist building AI-driven tools for polymer discovery.',
   location: 'Atlanta, GA',
   email: 'wschertzer3@gatech.edu',
+  personalEmail: 'schertzer.william@gmail.com',
   linkedin: 'https://www.linkedin.com/in/william-schertzer',
+  github: 'https://github.com/williamschertzer',
   resumeUrl: '/resume.pdf',
+  headshot: '/images/headshot.jpg',
   bio:
-    'I am a Georgia Tech PhD candidate in computational science and engineering focused on machine learning, atomistic simulation, and materials informatics for sustainable polymer systems.',
+    'I build machine-learning and simulation workflows for polymer discovery, with a background spanning experimental characterization, software, and materials informatics.',
 };
 
-const navItems = ['About', 'Resume', 'Portfolio', 'Images', 'Contact'];
+const navItems = ['Resume', 'Story', 'Papers', 'Projects', 'Gallery', 'Contact'];
 
-const highlights = [
-  'AI-driven polymer design',
-  'Materials data pipelines',
-  'Machine learning and simulation',
-  'Research, product, and technical strategy',
+const galleryImages = [
+  {
+    src: '/images/gallery/thumbs/ramprasad-group.png.png',
+    alt: 'Ramprasad Group at Georgia Tech',
+    label: 'Ramprasad Research group',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_8690.jpeg.png',
+    alt: 'William presenting at a scientific conference',
+    label: 'ACS Spring 2026 Conference talk',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_1687.jpeg.png',
+    alt: 'William standing between research posters at a poster session',
+    label: 'Emory Physics Soft Matter Day poster session',
+  },
+  {
+    src: '/images/gallery/thumbs/PXL_20240820_152755793.MP.jpeg.png',
+    alt: 'William at ACS Fall 2024 with a colleague and the ACS mascot',
+    label: 'ACS Fall 2024',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_1269.jpeg.png',
+    alt: 'William standing in front of an anion exchange membrane degradation poster',
+    label: 'GT MSE Poster session',
+  },
+  {
+    src: '/images/gallery/thumbs/DSC04580.jpeg.png',
+    alt: 'William accepting a research award',
+    label: 'Accepting Southeastern Energy Conference poster award',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_1326.jpeg.png',
+    alt: 'Second place Materials for Energy Application poster competition certificate',
+    label: 'GT MSE poster award',
+  },
+  {
+    src: '/images/gallery/thumbs/DSC04699.jpeg.png',
+    alt: 'William with other award recipients at a conference',
+    label: 'Southeastern Energy Conference poster award winners',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_0303.jpeg.png',
+    alt: 'William at a conference poster session with a colleague',
+    label: 'Conference poster session',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_1702.jpeg.png',
+    alt: 'William standing beside a research poster',
+    label: 'Research poster',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_1830.jpeg.png',
+    alt: 'William presenting research at a conference podium',
+    label: 'Research presentation',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG-20240903-WA0005.jpeg.png',
+    alt: 'William outdoors with family while hiking',
+    label: 'Family hike',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_1752.jpeg.png',
+    alt: 'Poster session photo with a DNA tension probes poster',
+    label: 'Poster session',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_2097.jpeg.png',
+    alt: 'William hiking sand dunes near a lake',
+    label: 'The Dune hike',
+  },
+  {
+    src: '/images/gallery/thumbs/IMG_0960.jpeg.png',
+    alt: 'William proposing outdoors',
+    label: 'Proposing to my fiancee, Marlaina',
+  },
 ];
 
-const experience = [
-  {
-    title: 'PhD Candidate and Graduate Research Assistant',
-    organization: 'Ramprasad Group, Georgia Tech',
-    years: 'August 2022 - Present',
-    description:
-      'Researching AI-assisted materials discovery for polymeric anion exchange membranes, with first-author publications in Journal of Materials Informatics and Journal of Physical Chemistry.',
-  },
-  {
-    title: 'Advanced Digital Innovation Intern',
-    organization: 'Dow Inc.',
-    years: 'May 2025 - August 2025',
-    description:
-      'Built a division-wide materials data ingestion and extraction pipeline using retrieval augmented generation, computer vision, and natural language processing.',
-  },
-  {
-    title: 'Head of Business Development',
-    organization: 'Matmerize',
-    years: 'January 2021 - January 2023',
-    description:
-      'Managed consulting projects helping clients use machine learning to accelerate the design of novel polymeric materials for specialty engineering applications.',
-  },
+const storyParagraphs = [
+  'I started at Georgia Tech as an undergraduate in Materials Science and Engineering, where I was drawn to the mix of physical intuition, experimental craft, and practical engineering. Early on, I spent time in experimental research and in the Materials Innovation and Learning Lab, volunteering, learning instrumentation, training other users, and eventually becoming responsible for helping run the SEM.',
+  'During COVID, my work pivoted toward computational materials research in the Ramprasad Group. That transition connected my experimental background with data, simulation, and machine learning. As an undergraduate researcher, I helped curate polymer datasets and contributed to a coauthored Macromolecules paper on copolymer informatics with multitask deep neural networks.',
+  'That experience made the PhD path feel like the right next step. I continued at Georgia Tech in computational science and engineering, focusing on AI-assisted polymer design, membrane degradation, and materials informatics. So far, that work has led to two first-author papers and a broader interest in turning scientific data into useful technical systems.',
+  'Alongside research, I have worked at Matmerize on business development and client-facing machine-learning projects, and at Dow on digital innovation work involving RAG, computer vision, NLP, and materials data extraction. I like problems that sit between research, software, and real-world use.',
+];
+
+const resumeSections = [
   {
     title: 'Education',
-    organization: 'Georgia Tech',
-    years: 'BS 2021 | PhD 2022 - Present',
+    icon: <GraduationCap />,
+    items: [
+      {
+        heading: 'Georgia Institute of Technology',
+        meta: 'PhD, Computational Science and Engineering | August 2022 - Present',
+        body:
+          'School of Materials Science and Engineering. Goizueta Foundation PhD Fellow and 2026 PMSE Emerging Professional.',
+      },
+      {
+        heading: 'Georgia Institute of Technology',
+        meta: 'BS, Materials Science and Engineering | Graduated December 2021',
+        body: 'Jack J. and Leda Zbar MSE Scholar.',
+      },
+    ],
+  },
+  {
+    title: 'Work Experience',
+    icon: <BriefcaseBusiness />,
+    items: [
+      {
+        heading: 'Graduate Research Assistant, Ramprasad Group',
+        meta: 'Georgia Tech | August 2022 - Present',
+        body:
+          'Researching AI-assisted materials discovery for polymeric anion exchange membranes, including first-author papers on fluorine-free polymer design and physics-informed degradation prediction.',
+      },
+      {
+        heading: 'Advanced Digital Innovation Intern, Dow Inc.',
+        meta: 'May 2025 - August 2025',
+        body:
+          'Built a division-wide materials data ingestion and extraction pipeline using retrieval augmented generation, computer vision, and natural language processing.',
+      },
+      {
+        heading: 'Head of Business Development, Matmerize',
+        meta: 'January 2021 - January 2023',
+        body:
+          'Managed consulting projects helping clients use machine learning to accelerate the design of polymeric materials for specialty engineering applications.',
+      },
+      {
+        heading: 'Technical Officer, Materials Innovation and Learning Lab',
+        meta: 'August 2018 - January 2021',
+        body: 'Trained and supervised users operating SEMs and 3D printers as a volunteer in the Materials Innovation and Learning Laboratory (MILL) maker space at Georgia Tech.',
+      },
+      {
+        heading: 'Undergraduate Research Assistant, Ramprasad Group',
+        meta: 'Georgia Tech | August - December 2020',
+        body:
+          'Coauthored copolymer informatics work in Macromolecules and helped curate thousands of polymer data points for AI-based materials discovery.',
+      },
+      {
+        heading: 'Research Experience for Undergraduates',
+        meta: 'Florida International University | June - August 2019',
+        body:
+          'Studied boron nitride nanotube polymer composites for piezoelectric microlattices using SEM and UV-Vis spectroscopy.',
+      },
+      {
+        heading: 'Engineering Intern, Manufacturing and Operations',
+        meta: 'CommScope | June 2020 - August 2020',
+        body:
+          'Developed work instructions for new equipment, supported CAD and engineering specification diagrams, and coordinated fixture design for manufacturing quality.',
+      },
+      {
+        heading: 'Engineering Intern, Research and Development',
+        meta: 'Carbice | January 2020 - April 2020',
+        body:
+          'Designed a thermal interface material system, executed thermal cycling tests, and led market analysis for aerospace applications.',
+      },
+      {
+        heading: 'Engineering Intern, Data Analysis and Operations',
+        meta: 'Georgia Pacific | May - August 2018',
+        body:
+          'Improved manufacturing procedures, analyzed customer complaint data, and helped reduce reject rates through targeted quality-system improvements.',
+      },
+    ],
+  },
+  {
+    title: 'Technical Skills',
+    icon: <Microscope />,
+    items: [
+      {
+        heading: 'Programming and Data',
+        meta: 'Python, C++, SQL, machine learning, atomistic simulations',
+        body: 'Experience building data workflows, simulation-backed analyses, and applied ML systems for materials research.',
+      },
+      {
+        heading: 'Engineering Tools and Instruments',
+        meta: 'SolidWorks, MATLAB, SAP, SEM, UV-Vis, 3D printing',
+        body: 'Hands-on background in experimental materials characterization, manufacturing, and research instrumentation.',
+      },
+    ],
+  },
+  {
+    title: 'Awards',
+    icon: <Award />,
+    items: [
+      {
+        heading: '2026 PMSE Emerging Professional Awardee',
+        meta: 'American Chemical Society, Polymer Materials: Science and Engineering Division',
+      },
+      {
+        heading: '3rd Place Poster Competition',
+        meta: '2026 Southeastern Energy Conference Student Symposium',
+      },
+      {
+        heading: 'Best Paper Award',
+        meta: '2025 UNCAGE-ME EFRC All Hands Meeting',
+      },
+      {
+        heading: '2nd Place Poster Competition',
+        meta: 'Georgia Tech MSE Spring 2025 Poster Competition',
+      },
+      {
+        heading: '2nd Place Poster Showcase',
+        meta: 'Georgia Tech MSE 2024 Fall Poster Showcase',
+      },
+    ],
+  },
+  {
+    title: 'Personal',
+    icon: <Mountain />,
+    items: [
+      {
+        heading: 'Outside the lab',
+        meta: 'Rock climbing, soccer, jazz piano, science fiction',
+    
+      },
+      {
+        heading: 'Languages',
+        meta: 'Native English, Fluent Spanish, Conversational Hebrew',
+      },
+    ],
+  },
+];
+
+const selectedWorks = [
+  {
+    title: 'AI-driven design of fluorine-free polymers for sustainable and high-performance anion exchange membranes',
+    category: 'First-author paper',
+    pdf: '/papers/ai-driven-fluorine-free-polymers.pdf',
+    doi: 'https://www.oaepublish.com/articles/jmi.2024.69',
     description:
-      'PhD in Computational Science and Engineering in the School of Materials Science and Engineering; BS in Materials Science and Engineering.',
+      'A materials informatics study using AI-driven design to identify fluorine-free polymers for sustainable anion exchange membranes.',
+    tags: ['Materials Informatics', 'Polymers', 'AEMs'],
   },
-];
-
-const skills = [
-  'Python',
-  'C++',
-  'SQL',
-  'Machine Learning',
-  'Atomistic Simulations',
-  'MATLAB',
-  'SAP',
-  'SolidWorks',
-  'SEM',
-  'UV-Vis Spectroscopy',
-  '3D Printing',
-];
-
-const awards = [
-  '2026 PMSE Emerging Professional Awardee',
-  '2026 Southeastern Energy Conference poster competition, 3rd place',
-  '2025 UNCAGE-ME EFRC All Hands Meeting Best Paper Award',
-  'Georgia Tech MSE poster competition and showcase awards',
-];
-
-const portfolio = [
   {
-    title: 'AI-Driven Fluorine-Free Polymer Design',
-    category: 'First-Author Publication',
-    image:
-      'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85',
+    title: 'AI-assisted physics-informed predictions of degradation behavior of polymeric anion exchange membranes',
+    category: 'First-author paper',
+    pdf: '/papers/physics-informed-degradation.pdf',
+    doi: 'https://pubs.acs.org/doi/10.1021/acs.jpcb.5c07063',
     description:
-      'Designed and studied fluorine-free polymers for sustainable, high-performance anion exchange membranes using AI-assisted materials informatics.',
-    tags: ['Materials Informatics', 'Polymers', 'Sustainability'],
+      'A physics-informed prediction workflow for understanding degradation behavior in polymeric anion exchange membranes.',
+    tags: ['Physics-Informed ML', 'Degradation', 'JPCB'],
   },
   {
-    title: 'Materials Data Extraction Pipeline',
-    category: 'Digital Innovation',
-    image:
-      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=85',
+    title: 'Copolymer informatics with multitask deep neural networks',
+    category: 'Coauthored paper',
+    pdf: '/papers/copolymer-informatics.pdf',
+    doi: 'https://pubs.acs.org/doi/full/10.1021/acs.macromol.1c00728',
     description:
-      'Orchestrated a proprietary materials data workflow combining RAG, computer vision, and NLP, then designed a user interface for interacting with the extracted data.',
-    tags: ['RAG', 'Computer Vision', 'NLP'],
-  },
-  {
-    title: 'Copolymer Informatics with Deep Learning',
-    category: 'Research Collaboration',
-    image:
-      'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85',
-    description:
-      'Contributed to polymer data curation and AI-based materials discovery work published in Macromolecules.',
-    tags: ['Deep Learning', 'Data Curation', 'Macromolecules'],
+      'A coauthored Macromolecules paper connecting curated copolymer datasets with multitask deep learning for polymer property prediction.',
+    tags: ['Deep Learning', 'Copolymer Data', 'Macromolecules'],
   },
 ];
 
-const imageGallery = [
+const projects = [
   {
-    src:
-      'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1000&q=85',
-    alt: 'Warm landscape at golden hour',
+    title: 'Spotify Representative Sampler',
+    category: 'Personal GitHub project',
+    url: 'https://github.com/williamschertzer/spotify_representative_sampler',
+    description:
+      'A project for building a representative sample from Spotify listening or playlist data, useful for turning large music collections into smaller, analyzable subsets.',
+    tags: ['Python', 'Data Analysis', 'Spotify'],
   },
   {
-    src:
-      'https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1000&q=85',
-    alt: 'Modern architecture detail',
+    title: 'Web Scraper',
+    category: 'Personal GitHub project',
+    url: 'https://github.com/williamschertzer/web-scraper',
+    description:
+      'A web-scraping project for collecting, parsing, and organizing web data into a more usable format.',
+    tags: ['Python', 'Scraping', 'Automation'],
   },
   {
-    src:
-      'https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1000&q=85',
-    alt: 'Open road through a mountain landscape',
+    title: 'Poster2Rating',
+    category: 'Personal GitHub project',
+    url: 'https://github.com/williamschertzer/poster2rating',
+    description:
+      'A project for evaluating research posters and converting poster content into structured ratings or feedback.',
+    tags: ['AI', 'Evaluation', 'Research Tools'],
   },
   {
-    src:
-      'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1000&q=85',
-    alt: 'Clean professional workspace',
+    title: 'AEM Conductivity, Water Uptake, and Swelling Dataset',
+    category: 'Ramprasad Group / polyVERSE',
+    url: 'https://github.com/Ramprasad-Group/polyVERSE/tree/main/Other/Conductivity_anionic_water_uptake_swelling',
+    description:
+      'Informatics-ready anion exchange membrane data for conductivity, water uptake, and swelling behavior within the Ramprasad Group polyVERSE repository.',
+    tags: ['Materials Data', 'AEMs', 'polyVERSE'],
   },
-];
-
-const writing = [
-  'AI-assisted design of sustainable polymer membranes',
-  'Physics-informed prediction of membrane degradation',
-  'Materials data infrastructure for research teams',
 ];
 
 function App() {
@@ -149,11 +323,11 @@ function App() {
     <main className="min-h-screen bg-paper text-ink">
       <Hero />
       <Nav />
-      <About />
       <Resume />
-      <Portfolio />
-      <Images />
-      <Writing />
+      <Story />
+      <SelectedWork />
+      <Projects />
+      <Gallery />
       <Contact />
       <Footer />
     </main>
@@ -162,52 +336,32 @@ function App() {
 
 function Hero() {
   return (
-    <section className="relative min-h-[88vh] overflow-hidden bg-ink text-white">
-      <img
-        className="absolute inset-0 h-full w-full object-cover opacity-70"
-        src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=2200&q=90"
-        alt="Architectural lines on a modern building"
-      />
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(16,24,36,0.92),rgba(16,24,36,0.58),rgba(16,24,36,0.2))]" />
-      <div className="relative z-10 mx-auto flex min-h-[88vh] max-w-7xl flex-col justify-between px-5 py-7 sm:px-8 lg:px-10">
-        <div className="flex items-center justify-between gap-4 text-sm font-semibold uppercase tracking-[0.16em] text-white/78">
-          <span>{profile.name}</span>
-          <span>williamschertzer.com</span>
-        </div>
-
-        <div className="grid gap-10 pb-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
-          <div className="max-w-3xl">
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-sm font-semibold backdrop-blur">
-              <Sparkles size={16} />
-              Georgia Tech PhD candidate in computational materials science
-            </p>
-            <h1 className="max-w-4xl text-5xl font-extrabold leading-[1.02] sm:text-6xl lg:text-7xl">
-              {profile.role}
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/84 sm:text-xl">{profile.bio}</p>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a className="button button-light" href="#portfolio">
-                <Layers3 size={18} />
-                View Portfolio
-              </a>
-              <a className="button button-ghost" href={profile.resumeUrl}>
-                <Download size={18} />
-                Resume
-              </a>
-            </div>
+    <section className="bg-ink px-5 py-8 text-white sm:px-8 lg:px-10">
+      <div className="mx-auto grid min-h-[86vh] max-w-7xl gap-10 lg:grid-cols-[1fr_0.72fr] lg:items-center">
+        <div className="max-w-4xl">
+          <h1 className="text-5xl font-extrabold leading-[1.02] sm:text-6xl lg:text-7xl">
+            {profile.role}
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/80 sm:text-xl">{profile.bio}</p>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a className="button button-light" href="#papers">
+              <BookOpen size={18} />
+              Selected Work
+            </a>
+            <a className="button button-ghost" href={profile.resumeUrl}>
+              <Download size={18} />
+              Resume
+            </a>
           </div>
-
-          <aside className="hero-panel max-w-xl lg:ml-auto">
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-white/62">Focus</p>
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
-              {highlights.map((item) => (
-                <div className="rounded-md border border-white/14 bg-white/10 p-4 backdrop-blur" key={item}>
-                  <p className="text-base font-semibold leading-6">{item}</p>
-                </div>
-              ))}
-            </div>
-          </aside>
         </div>
+
+        <figure className="headshot-panel">
+          <img src={profile.headshot} alt="William Schertzer headshot" />
+          <figcaption>
+            <span>{profile.name}</span>
+            <span>{profile.location}</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
@@ -240,7 +394,7 @@ function SectionHeader({ eyebrow, title, children, inverted = false }) {
         {title}
       </h2>
       {children && (
-        <p className={`mt-5 text-lg leading-8 ${inverted ? 'text-white/72' : 'text-slate'}`}>
+        <p className={`mt-5 text-lg leading-8 ${inverted ? 'text-white/70' : 'text-slate'}`}>
           {children}
         </p>
       )}
@@ -248,41 +402,51 @@ function SectionHeader({ eyebrow, title, children, inverted = false }) {
   );
 }
 
-function About() {
+function Gallery() {
   return (
-    <section id="about" className="px-5 py-20 sm:px-8 lg:px-10">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div className="overflow-hidden rounded-lg bg-ink shadow-soft">
-          <img
-            className="aspect-[4/5] w-full object-cover"
-            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1300&q=85"
-            alt="Clean desk with laptop and notebook"
-          />
-        </div>
-        <div>
-          <SectionHeader eyebrow="About" title="A professional site built around credibility.">
-            I work across polymer science, machine learning, simulation, and technical strategy,
-            with experience translating research into data products, publications, and business
-            outcomes.
-          </SectionHeader>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <Metric value="PhD" label="Computational Science and Engineering at Georgia Tech" />
-            <Metric value="2+" label="First-author publications in AI-assisted polymer research" />
-            <Metric value="RAG" label="Materials data extraction pipelines with computer vision and NLP" />
-            <Metric value="ML" label="Machine learning for polymer design and materials informatics" />
-          </div>
+    <section id="gallery" className="bg-white px-5 py-20 sm:px-8 lg:px-10">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeader eyebrow="Gallery" title="Research, conferences, awards, and life outside work." />
+        <div className="gallery-grid">
+          {galleryImages.map((image) => (
+            <GalleryCard image={image} key={image.label} />
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-function Metric({ value, label }) {
+function GalleryCard({ image }) {
+  const [imageFailed, setImageFailed] = React.useState(false);
+
   return (
-    <div className="rounded-lg border border-ink/10 bg-white p-5 shadow-soft">
-      <p className="text-3xl font-extrabold text-teal">{value}</p>
-      <p className="mt-3 leading-7 text-slate">{label}</p>
-    </div>
+    <figure className="gallery-card">
+      {imageFailed ? (
+        <div className="gallery-placeholder">
+          <Presentation size={34} />
+          <span>{image.label}</span>
+        </div>
+      ) : (
+        <img src={image.src} alt={image.alt} onError={() => setImageFailed(true)} />
+      )}
+      <figcaption>{image.label}</figcaption>
+    </figure>
+  );
+}
+
+function Story() {
+  return (
+    <section id="story" className="px-5 py-20 sm:px-8 lg:px-10">
+      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.42fr_0.58fr]">
+        <SectionHeader eyebrow="Story" title="From experimental MSE to computational materials discovery." />
+        <div className="space-y-6 text-lg leading-8 text-slate">
+          {storyParagraphs.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -291,80 +455,79 @@ function Resume() {
     <section id="resume" className="bg-white px-5 py-20 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-          <SectionHeader eyebrow="Resume" title="Experience, education, and capabilities.">
-            My background combines graduate research, industrial digital innovation, startup
-            business development, manufacturing engineering, and materials R&D.
+          <SectionHeader eyebrow="Resume">
           </SectionHeader>
           <a className="button button-dark w-fit" href={profile.resumeUrl}>
             <Download size={18} />
-            Download PDF
+            Download Full Resume
           </a>
         </div>
-        <div className="grid gap-5 lg:grid-cols-4">
-          {experience.map((item, index) => (
-            <article className="resume-card" key={item.title}>
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-md bg-teal text-white">
-                {index === 0 ? <GraduationCap size={23} /> : null}
-                {index === 1 ? <Layers3 size={23} /> : null}
-                {index === 2 ? <BriefcaseBusiness size={23} /> : null}
-                {index === 3 ? <GraduationCap size={23} /> : null}
+        <div className="resume-section-grid">
+          {resumeSections.map((section) => (
+            <article className="resume-card" key={section.title}>
+              <div className="resume-card-title">
+                {React.cloneElement(section.icon, { size: 22 })}
+                <h3>{section.title}</h3>
               </div>
-              <p className="text-sm font-bold uppercase tracking-[0.14em] text-copper">{item.years}</p>
-              <h3 className="mt-3 text-2xl font-extrabold text-ink">{item.title}</h3>
-              <p className="mt-1 font-semibold text-teal">{item.organization}</p>
-              <p className="mt-4 leading-7 text-slate">{item.description}</p>
+              <div className="mt-5 space-y-5">
+                {section.items.map((item) => (
+                  <div key={item.heading}>
+                    <h4 className="text-lg font-extrabold text-ink">{item.heading}</h4>
+                    <p className="mt-1 text-sm font-bold uppercase tracking-[0.12em] text-copper">{item.meta}</p>
+                    <p className="mt-2 leading-7 text-slate">{item.body}</p>
+                  </div>
+                ))}
+              </div>
             </article>
           ))}
-        </div>
-        <div className="mt-6 grid gap-5 lg:grid-cols-2">
-          <article className="resume-card">
-            <h3 className="text-2xl font-extrabold text-ink">Technical Skills</h3>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {skills.map((skill) => (
-                <span className="tag" key={skill}>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </article>
-          <article className="resume-card">
-            <h3 className="text-2xl font-extrabold text-ink">Awards</h3>
-            <ul className="mt-5 space-y-3 leading-7 text-slate">
-              {awards.map((award) => (
-                <li key={award}>{award}</li>
-              ))}
-            </ul>
-          </article>
         </div>
       </div>
     </section>
   );
 }
 
-function Portfolio() {
+function SelectedWork() {
   return (
-    <section id="portfolio" className="px-5 py-20 sm:px-8 lg:px-10">
+    <section id="papers" className="px-5 py-20 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader eyebrow="Portfolio" title="Selected work and case studies.">
-          A sample of research, product, and data work spanning computational materials science,
-          polymer informatics, and applied AI systems.
+        <SectionHeader eyebrow="Selected Work" title="Papers and case studies.">
+          Paper cards show the PDF itself when the PDF is available locally, with download and DOI
+          links beneath each summary.
         </SectionHeader>
         <div className="grid gap-6 lg:grid-cols-3">
-          {portfolio.map((project) => (
-            <article className="project-card" key={project.title}>
-              <img className="aspect-[16/10] w-full object-cover" src={project.image} alt="" />
+          {selectedWorks.map((work) => (
+            <article className="paper-card" key={work.title}>
+              <div className="paper-preview">
+                {work.pdf ? (
+                  <iframe title={`${work.title} PDF preview`} src={`${work.pdf}#toolbar=0&navpanes=0`} />
+                ) : (
+                  <div className="paper-placeholder">
+                    <BookOpen size={38} />
+                    <span>PDF pending</span>
+                  </div>
+                )}
+              </div>
               <div className="p-5">
-                <p className="text-sm font-bold uppercase tracking-[0.14em] text-copper">
-                  {project.category}
-                </p>
-                <h3 className="mt-3 text-2xl font-extrabold text-ink">{project.title}</h3>
-                <p className="mt-4 leading-7 text-slate">{project.description}</p>
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-copper">{work.category}</p>
+                <h3 className="mt-3 text-2xl font-extrabold text-ink">{work.title}</h3>
+                <p className="mt-4 leading-7 text-slate">{work.description}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {work.tags.map((tag) => (
                     <span className="tag" key={tag}>
                       {tag}
                     </span>
                   ))}
+                </div>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  {work.pdf && (
+                    <a className="button button-dark" href={work.pdf}>
+                      <Download size={18} />
+                      PDF
+                    </a>
+                  )}
+                  <a className="button button-outline" href={work.doi}>
+                    DOI
+                  </a>
                 </div>
               </div>
             </article>
@@ -375,40 +538,27 @@ function Portfolio() {
   );
 }
 
-function Images() {
+function Projects() {
   return (
-    <section id="images" className="bg-ink px-5 py-20 text-white sm:px-8 lg:px-10">
+    <section id="projects" className="bg-white px-5 py-20 sm:px-8 lg:px-10">
       <div className="mx-auto max-w-7xl">
-        <SectionHeader eyebrow="Images" title="A visual layer that makes the site feel personal." inverted>
-          Replace these placeholders with a headshot, lab photos, conference photos, climbing
-          photos, project screenshots, or other images that feel representative of your work and
-          personality.
-        </SectionHeader>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {imageGallery.map((image) => (
-            <figure className="overflow-hidden rounded-lg bg-white/8" key={image.src}>
-              <img className="aspect-[4/5] w-full object-cover" src={image.src} alt={image.alt} />
-            </figure>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Writing() {
-  return (
-    <section className="bg-white px-5 py-20 sm:px-8 lg:px-10">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeader eyebrow="Writing" title="Research themes and future posts.">
-          These topics can become short essays, project notes, or publication summaries that show
-          how you think about materials discovery and technical systems.
-        </SectionHeader>
-        <div className="grid gap-4 md:grid-cols-3">
-          {writing.map((title) => (
-            <a className="writing-link" href="#contact" key={title}>
-              <span>{title}</span>
-              <ArrowUpRight size={18} />
+        <SectionHeader eyebrow="Projects" title="Code, data, and research tools." />
+        <div className="grid gap-5 md:grid-cols-2">
+          {projects.map((project) => (
+            <a className="project-link" href={project.url} key={project.title}>
+              <div>
+                <p className="text-sm font-bold uppercase tracking-[0.14em] text-copper">{project.category}</p>
+                <h3 className="mt-3 text-2xl font-extrabold text-ink">{project.title}</h3>
+                <p className="mt-4 leading-7 text-slate">{project.description}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span className="tag" key={tag}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <Github className="text-teal" size={22} />
             </a>
           ))}
         </div>
@@ -419,61 +569,34 @@ function Writing() {
 
 function Contact() {
   return (
-    <section id="contact" className="px-5 py-20 sm:px-8 lg:px-10">
-      <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr]">
-        <div>
-          <SectionHeader eyebrow="Contact" title="Make it easy for people to reach you.">
-            Reach out for research collaborations, technical conversations, speaking opportunities,
-            consulting inquiries, or project introductions.
-          </SectionHeader>
-          <div className="space-y-4 text-lg text-slate">
-            <p className="flex items-center gap-3">
-              <Mail className="text-copper" size={20} />
-              <a className="font-semibold text-ink hover:text-teal" href={`mailto:${profile.email}`}>
-                {profile.email}
-              </a>
-            </p>
-            <p className="flex items-center gap-3">
-              <MapPin className="text-copper" size={20} />
-              {profile.location}
-            </p>
-            <div className="flex gap-3 pt-2">
-              <a className="icon-link" href={profile.linkedin} aria-label="LinkedIn">
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
+    <section id="contact" className="bg-ink px-5 py-12 text-white sm:px-8 lg:px-10">
+      <div className="mx-auto flex max-w-7xl flex-col justify-between gap-6 md:flex-row md:items-center">
+        <div className="space-y-3 text-lg text-white/75">
+          <p className="flex items-center gap-3">
+            <Mail className="text-copper" size={20} />
+            <a className="font-semibold text-white hover:text-copper" href={`mailto:${profile.email}`}>
+              {profile.email}
+            </a>
+          </p>
+          <p className="flex items-center gap-3">
+            <Mail className="text-copper" size={20} />
+            <a className="font-semibold text-white hover:text-copper" href={`mailto:${profile.personalEmail}`}>
+              {profile.personalEmail}
+            </a>
+          </p>
+          <p className="flex items-center gap-3">
+            <MapPin className="text-copper" size={20} />
+            {profile.location}
+          </p>
         </div>
-
-        <form
-          className="contact-form"
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-        >
-          <input type="hidden" name="form-name" value="contact" />
-          <label className="hidden">
-            Do not fill this out
-            <input name="bot-field" />
-          </label>
-          <label className="field">
-            Name
-            <input name="name" type="text" placeholder="Your name" required />
-          </label>
-          <label className="field">
-            Email
-            <input name="email" type="email" placeholder="you@example.com" required />
-          </label>
-          <label className="field">
-            Message
-            <textarea name="message" placeholder="What would you like to discuss?" rows="6" required />
-          </label>
-          <button className="button button-dark" type="submit">
-            <Mail size={18} />
-            Send Message
-          </button>
-        </form>
+        <div className="flex gap-3">
+          <a className="icon-link icon-link-light" href={profile.linkedin} aria-label="LinkedIn">
+            <Linkedin size={20} />
+          </a>
+          <a className="icon-link icon-link-light" href={profile.github} aria-label="GitHub">
+            <Github size={20} />
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -8,8 +8,6 @@ The site is a static React app built with Vite and Tailwind CSS. It includes:
 - Resume section
 - Research and project portfolio cards
 - Image gallery
-- Optional writing/thinking section
-- Netlify-ready contact form
 - Downloadable resume at `public/resume.pdf`
 
 ## Local Development
@@ -32,14 +30,33 @@ The production files are generated in `dist/`.
 Most personal content lives near the top of `src/main.jsx`.
 
 - Update `profile` if you want to change your email, LinkedIn, location, or bio.
-- Update `experience`, `skills`, and `awards` as your resume changes.
-- Replace `portfolio` with real projects and links.
-- Replace placeholder Unsplash images with your own images or project screenshots.
+- Update `resumeSections`, `selectedWorks`, `projects`, and `galleryImages` as your resume, papers, repositories, and photos change.
 - Replace `public/resume.pdf` whenever you have a newer resume.
+
+## Image Placeholders
+
+The site already uses `public/images/headshot.jpg` for the first panel.
+
+Gallery images live in `public/images/gallery/`. The current site references uploaded files such as:
+
+- `public/images/gallery/IMG_8690.jpeg`
+- `public/images/gallery/IMG_1687.jpeg`
+- `public/images/gallery/PXL_20240820_152755793.MP.jpeg`
+- `public/images/gallery/IMG_2097.jpeg`
+
+To add or remove images, edit the `galleryImages` array in `src/main.jsx`.
+
+## Paper PDFs
+
+The site currently includes:
+
+- `public/papers/ai-driven-fluorine-free-polymers.pdf`
+- `public/papers/physics-informed-degradation.pdf`
+- `public/papers/copolymer-informatics.pdf`
 
 ## Deployment Recommendation
 
-Use Netlify for this static site. Netlify works well for Vite, gives you automatic HTTPS, supports custom domains, and can process the contact form already included in the site.
+Use Netlify for this static site. Netlify works well for Vite, gives you automatic HTTPS, and supports custom domains.
 
 Build settings:
 
